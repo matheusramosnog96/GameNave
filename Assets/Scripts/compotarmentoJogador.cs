@@ -38,4 +38,7 @@ public class compotarmentoJogador : MonoBehaviour
         }
 
     }
+    void OnTriggerEnter2D (Collider2D outro) {
+        Destroy(gameObject);
+    }
 }
