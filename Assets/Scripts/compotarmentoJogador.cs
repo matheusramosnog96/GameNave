@@ -8,14 +8,26 @@ public class compotarmentoJogador : MonoBehaviour
     public float rotacao = 180.0f;
     public float velocidadeMaxima = 10.0f;
     public Rigidbody2D jogadorRb;
+    public Rigidbody2D prefabTiro;
+    public float velocidadeTiro = 3.0f;
+    
 
     void Start()
     {
         transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Rigidbody2D tiro =Instantiate(prefabTiro, jogadorRb.position, Quaternion.identity);
+            tiro.velocity = -(transform.up * velocidadeTiro);
+        }
+    }
     void FixedUpdate()
     {
+        
         if (Input.GetKey(KeyCode.W))
         {
             Vector3 direcao = transform.up * -aceleracao; // Vector3 direcao = new Vector3 (0.0f, 1.0f * aceleracao, 0.0f);
